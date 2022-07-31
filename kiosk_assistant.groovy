@@ -46,10 +46,10 @@ def check() {
          
          if (diffMins >= INACTIVITY_MINS) {
              println "killing POWERPNT.exe"
-             //"taskkill /f /im POWERPNT.exe".execute()
+             "taskkill /f /im POWERPNT.exe".execute()
              
              println "starting POWERPNT.exe"
-             //"C:/Users/Paul/Stage/interactive-museum-display/run.bat".execute() 
+             "C:/Users/Paul/Stage/interactive-museum-display/run.bat".execute() 
          }
     }
 }
