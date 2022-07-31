@@ -54,12 +54,8 @@ def check() {
     }
 }
 
-/*
 while (true) {
     check()
     println "sleeping..."
     sleep 60_000
 }
-*/
-
-println "hello world"
