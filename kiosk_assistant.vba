@@ -7,8 +7,7 @@ End Sub
 
 Sub WriteSlideChangeFile(ByVal SSW As SlideShowWindow)
     Open filePath For Output As 1
-        Print #1, Format(Now(), "HH:mm:ss")
-        Print #1, Application.ActivePresentation.Name + Str(SSW.View.CurrentShowPosition) + " END"
+        Print #1, Format(Now(), "HH:mm:ss") + " " + Application.ActivePresentation.Name + Str(SSW.View.CurrentShowPosition) + " EOL"
     Close #1
 End Sub
 

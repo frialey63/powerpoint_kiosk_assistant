@@ -11,13 +11,16 @@ def check() {
     
     var myFile = new File(FILE_PATH)
     var lines = myFile.readLines()
+    var lineStr = lines.get(0)
+    var lineArr = lineStr.split(" ")
     
-    var secondLine = lines.get(1)
-    var secondLineArr = secondLine.split(" ")
-    var presName = secondLineArr[0]
-    var slideNum = secondLineArr[1]
+    var time = lineArr[0]
+    var presName = lineArr[1]
+    var slideNum = lineArr[2]
     
-    if (("Merged.pptm" == presName) && (1 ==slideNum )) {
+    println "time = ${time}, presName = ${presName}, slideNum = ${slideNum}"
+    
+    if (("Merged.pptm" == presName) && (1 == slideNum )) {
         println "finished check on home slide"
     } else {
          println "continuing to check time..."
@@ -28,10 +31,12 @@ def check() {
          var hours = Integer.parseInt(nowStrArr[0])
          var mins = Integer.parseInt(nowStrArr[1])
          
-         var firstLine = lines.get(0)
-         var firstLineArr = firstLine.split(":")
-         var oldHours = Integer.parseInt(firstLineArr[0])
-         var oldMins = Integer.parseInt(firstLineArr[1])
+         var timeArr = time.split(":")
+         var oldHours = Integer.parseInt(timeArr[0])
+         var oldMins = Integer.parseInt(timeArr[1])
+         
+         println "time: $time -> $oldHours $oldMins"
+         println "nowStr: $nowStr -> $hours $mins"
          
          var totalMins = 60*hours + mins
          var totalOldMins = 60*oldHours + oldMins
@@ -43,14 +48,18 @@ def check() {
              println "killing POWERPNT.exe"
              //"taskkill /f /im POWERPNT.exe".execute()
              
-              println "starting POWERPNT.exe"
-             //'start "C:\Program Files\Microsoft Office\root\Office16\powerpnt" "Merged.ppsm"'.execute() 
+             println "starting POWERPNT.exe"
+             //"C:/Users/Paul/Stage/interactive-museum-display/run.bat".execute() 
          }
     }
 }
 
+/*
 while (true) {
     check()
     println "sleeping..."
     sleep 60_000
 }
+*/
+
+println "hello world"

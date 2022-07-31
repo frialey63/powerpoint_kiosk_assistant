@@ -1,1 +1,1 @@
-start "C:\Program Files\Microsoft Office\root\Office16\powerpnt" "Merged.ppsm"
+start powerpnt.exe "C:\Users\Paul\Stage\interactive-museum-display\Merged.pptx"

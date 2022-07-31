@@ -7,27 +7,26 @@ while true
 do	
 	echo "starting check..."
 	
-	id=$(tail -1 "$filePath")
+	# PJP beware the hidden EOL character on $line_str but last field will be ignored
+	line_str=$(tail -1 "$filePath")
 
-	IFS=" " read pres_name slide_num ignored <<< "$id"
+	IFS=" " read old pres_name slide_num eol <<< "$line_str"
 
-	#echo "$id -> $pres_name $slide_num"
+	#echo "line_str: $old $pres_name $slide_num"
 	
 	if [[ $pres_name == "Merged.pptm" && $slide_num == "1" ]]; then
 	    echo "finished check on home slide"
 	else
 		echo "continuing to check time..."
 	
-		old=$(head -1 "$filePath")
 		new=`date +%H:%M`
 
 		# feeding variables by using read and splitting with IFS
-		# PJP beware the hidden EOL character on $old_sec but that field will be ignored
 		IFS=: read old_hour old_min old_sec <<< "$old"
 		IFS=: read hour min <<< "$new"
 
-		#echo "$old -> $old_hour $old_min $old_sec"
-		#echo "$new -> $hour $min"
+		#echo "old: $old -> $old_hour $old_min $old_sec"
+		#echo "new: $new -> $hour $min"
 
 		# convert hours to minutes
 		# the 10# is there to avoid errors with leading zeros by telling bash that we use base 10
