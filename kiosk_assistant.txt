@@ -1,0 +1,1 @@
+For the OnSlideShowPageChange event to work it is necessary to boot VBA by adding an ActiveX control (e.g. hidden Label) to the first slide in the PPT.
